@@ -80,11 +80,11 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link href="/menu" className="hidden items-center gap-2.5 sm:flex">
+          <Link href="/menu" className="flex items-center gap-2.5">
             <span className={`font-sans text-[11px] font-medium ${isLightHero ? "text-dark-800" : "text-biege-100"}`}>
               Menu
             </span>
-            <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800">
+            <span className="hidden h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800 sm:flex">
               <ForkKnifeIcon className="h-4 w-4" />
             </span>
           </Link>
@@ -106,7 +106,7 @@ export function Header() {
               type="button"
               onClick={() => setOrderOpen(true)}
               aria-label="Order now"
-              className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800 transition-opacity hover:opacity-85"
+              className="hidden h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800 transition-opacity hover:opacity-85 sm:flex"
             >
               <ClocheIcon className="h-4 w-4" />
             </button>

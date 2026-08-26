@@ -57,7 +57,7 @@ export function DrinksSection() {
       </div>
 
       <div className="order-first flex w-full flex-col gap-1.5 py-1.5 pr-1.5 lg:order-none lg:w-[55%]">
-        <div className="relative h-[76em] w-full overflow-hidden lg:h-[54em]">
+        <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-auto sm:h-[76em] lg:h-[54em]">
           <Image
             src="/images/cocktails-1.avif"
             alt="Bartender pouring a cocktail into a coupe glass at Maza Bistrot"
@@ -66,7 +66,7 @@ export function DrinksSection() {
             className="object-cover"
           />
         </div>
-        <div className="relative h-[76em] w-full overflow-hidden lg:h-[54em]">
+        <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-auto sm:h-[76em] lg:h-[54em]">
           <Image
             src="/images/cocktails-2.avif"
             alt="Smoked Old Fashioned cocktail at Maza Bistrot"

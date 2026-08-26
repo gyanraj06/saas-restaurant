@@ -1,6 +1,24 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { ReactLenis, useLenis } from "lenis/react";
+
+// Next.js resets the native scroll position to the top on navigation, but Lenis
+// keeps its own remembered target from the previous page and smoothly "corrects"
+// back toward it on the next animation frame — so a page navigated to (e.g. via
+// the header's "Menu" link) can open mid-scroll instead of at the top. Snapping
+// Lenis to 0 immediately whenever the route changes keeps it in sync.
+function ScrollToTopOnNavigate() {
+  const lenis = useLenis();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    lenis?.scrollTo(0, { immediate: true });
+  }, [pathname, lenis]);
+
+  return null;
+}
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   return (
@@ -25,6 +43,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
         content: typeof document !== "undefined" ? document.body : undefined,
       }}
     >
+      <ScrollToTopOnNavigate />
       {children}
     </ReactLenis>
   );

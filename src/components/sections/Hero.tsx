@@ -51,7 +51,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-8 pb-10 sm:flex-row sm:items-end sm:justify-between sm:pb-14">
+        <div className="flex flex-col items-center gap-8 pb-10 sm:flex-row sm:items-end sm:justify-between sm:pb-14">
           {/* TODO: confirm this marketing copy with the business before publishing. */}
           <p className="max-w-[443px] font-sans text-sm font-medium leading-relaxed text-biege-50">
             At Maza Bistrot, every dish is a tribute to tradition and every
