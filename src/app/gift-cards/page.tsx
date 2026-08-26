@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import { DemoNotice } from "@/components/layout/DemoNotice";
+
+export const metadata: Metadata = { title: "Gift Cards" };
+
+export default function GiftCardsPage() {
+  return <DemoNotice />;
+}

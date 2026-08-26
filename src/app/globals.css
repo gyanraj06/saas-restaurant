@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand palette, sourced from amritpalace.com's :root CSS custom properties */
+  --color-ink-950: #101010;
+  --color-dark-800: #2c2c2c;
+  --color-biege-100: #d8cbb8;
+  --color-biege-50: #dfdad5;
+  --color-khaki-300: #c7b99d;
+  --color-taupe-400: #bfb4a3;
+  --color-amber-500: #d49653;
+
+  --background: var(--color-ink-950);
+  --foreground: var(--color-biege-100);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ink-950: var(--color-ink-950);
+  --color-dark-800: var(--color-dark-800);
+  --color-biege-100: var(--color-biege-100);
+  --color-biege-50: var(--color-biege-50);
+  --color-khaki-300: var(--color-khaki-300);
+  --color-taupe-400: var(--color-taupe-400);
+  --color-amber-500: var(--color-amber-500);
+
+  --font-display: var(--font-tt-ramillas);
+  --font-sans: var(--font-satoshi);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
