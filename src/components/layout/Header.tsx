@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { primaryNav, contactLink, reserveLink, orderLocations, siteInfo } from "@/content/nav";
 import { OrderNowModal } from "@/components/layout/OrderNowModal";
 import { ForkKnifeIcon, ClocheIcon, ChevronDownIcon } from "@/components/icons";
@@ -11,6 +12,11 @@ export function Header() {
   const [hidden, setHidden] = useState(false);
   const [orderOpen, setOrderOpen] = useState(false);
   const lastScrollY = useRef(0);
+  const pathname = usePathname();
+
+  // The menu page opens on a light beige hero, so the header needs to sit
+  // transparent over it with dark text instead of the site-wide light-on-dark scheme.
+  const isLightHero = pathname?.startsWith("/menu");
 
   useEffect(() => {
     function onScroll() {
@@ -23,11 +29,17 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const textColor = isLightHero
+    ? "text-dark-800 hover:text-amber-500"
+    : "text-biege-100 hover:text-amber-500";
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-30 h-20 border-b border-white/10 bg-black/20 backdrop-blur-md backdrop-saturate-50 backdrop-grayscale-[0.4] transition-transform duration-500 ease-in-out ${
-        hidden ? "-translate-y-full" : "translate-y-0"
-      }`}
+      className={`fixed inset-x-0 top-0 z-30 h-20 transition-[translate,opacity] duration-700 [transition-timing-function:cubic-bezier(0.65,0,0.35,1)] ${
+        isLightHero
+          ? "border-b border-dark-800/10"
+          : "border-b border-white/10 backdrop-blur-md backdrop-saturate-50 backdrop-grayscale-[0.4]"
+      } ${hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
     >
       <div className="mx-auto flex h-full max-w-[1999px] items-center justify-between px-7">
         <div className="flex items-center gap-8">
@@ -35,10 +47,10 @@ export function Header() {
             <Image
               src="/images/logo.png"
               alt={siteInfo.name}
-              width={518}
-              height={192}
+              width={160}
+              height={160}
               priority
-              className="h-6 w-auto"
+              className="h-9 w-auto"
             />
           </Link>
 
@@ -47,20 +59,20 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-sans text-[11px] font-medium text-biege-100 hover:text-amber-500"
+                className={`font-sans text-[11px] font-medium ${textColor}`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href={reserveLink.href}
-              className="font-sans text-[11px] font-medium text-biege-100 hover:text-amber-500"
+              className={`font-sans text-[11px] font-medium ${textColor}`}
             >
               {reserveLink.label}
             </Link>
             <Link
               href={contactLink.href}
-              className="font-sans text-[11px] font-medium text-biege-100 hover:text-amber-500"
+              className={`font-sans text-[11px] font-medium ${textColor}`}
             >
               {contactLink.label}
             </Link>
@@ -69,19 +81,21 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           <Link href="/menu" className="hidden items-center gap-2.5 sm:flex">
-            <span className="font-sans text-[11px] font-medium text-biege-100">Menu</span>
+            <span className={`font-sans text-[11px] font-medium ${isLightHero ? "text-dark-800" : "text-biege-100"}`}>
+              Menu
+            </span>
             <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800">
               <ForkKnifeIcon className="h-4 w-4" />
             </span>
           </Link>
 
-          <div className="hidden h-8 w-px bg-biege-100 sm:block" />
+          <div className={`hidden h-8 w-px sm:block ${isLightHero ? "bg-dark-800" : "bg-biege-100"}`} />
 
           <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={() => setOrderOpen(true)}
-              className="flex items-center gap-1 font-sans text-[11px] font-medium text-biege-100 hover:text-amber-500"
+              className={`flex items-center gap-1 font-sans text-[11px] font-medium ${textColor}`}
               aria-haspopup="dialog"
               aria-expanded={orderOpen}
             >

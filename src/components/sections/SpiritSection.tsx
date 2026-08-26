@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { MaskedChars, useRevealOnVisible } from "@/components/animations/MaskedChars";
 
 // Matches the live site's scroll-triggered reveal: the video sits inset within a
 // cream-colored frame and expands to full-bleed as the section scrolls into view.
@@ -10,6 +11,7 @@ const MAX_INSET = 28; // px
 export function SpiritSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState(0);
+  const { ref: textRef, start } = useRevealOnVisible<HTMLHeadingElement>();
 
   useEffect(() => {
     let ticking = false;
@@ -60,10 +62,13 @@ export function SpiritSection() {
         <div className="absolute inset-0 bg-black/45" />
 
         <div className="relative flex h-full flex-col justify-start px-7 pt-24">
-          <h2 className="font-display text-[clamp(1.75rem,4vw,4.25rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-biege-100">
-            The Spirit Of
+          <h2
+            ref={textRef}
+            className="font-display text-[clamp(1.75rem,4vw,4.25rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-biege-100"
+          >
+            <MaskedChars text="The Spirit Of" start={start} />
             <br />
-            Indian Dining
+            <MaskedChars text="Indian Dining" start={start} startIndex={11} />
           </h2>
 
           <p className="mt-5 max-w-md font-sans text-sm font-medium text-biege-100/90 sm:text-base">

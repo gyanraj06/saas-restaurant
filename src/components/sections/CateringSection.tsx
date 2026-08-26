@@ -1,23 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import { cateringFeatures } from "@/content/catering-features";
+import { MaskedChars, useRevealOnVisible } from "@/components/animations/MaskedChars";
 
 export function CateringSection() {
+  const { ref, start } = useRevealOnVisible<HTMLDivElement>();
+
   return (
     <section className="w-full bg-taupe-400 px-7 py-20 sm:py-28">
-      <div className="mx-auto max-w-4xl text-center">
+      <div ref={ref} className="mx-auto max-w-4xl text-center">
         <h2 className="font-display text-[clamp(2rem,6vw,6rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-dark-800">
-          Catering
+          <MaskedChars text="Catering" start={start} />
         </h2>
 
         <div className="mt-2 flex flex-col items-center gap-3 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6">
           <p className="order-2 justify-self-end font-sans text-xs font-medium uppercase tracking-wide text-dark-800 sm:order-1 sm:text-sm">
-            Exceptional Food
+            <MaskedChars text="Exceptional Food" start={start} />
           </p>
           <h2 className="order-1 font-display text-[clamp(2rem,6vw,6rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-dark-800 sm:order-2 [font-kerning:none]">
-            The Amrit Way
+            <MaskedChars text="The Amrit Way" start={start} startIndex={8} />
           </h2>
           <p className="order-3 justify-self-start font-sans text-xs font-medium uppercase tracking-wide text-dark-800 sm:text-sm">
-            Anywhere
+            <MaskedChars text="Anywhere" start={start} />
           </p>
         </div>
 

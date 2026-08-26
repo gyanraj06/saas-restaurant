@@ -1,7 +1,22 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { StarIcon, GoogleIcon } from "@/components/icons";
+import { MaskedChars } from "@/components/animations/MaskedChars";
 
 export function Hero() {
+  const [start, setStart] = useState(false);
+
+  useEffect(() => {
+    // Double rAF so the browser paints the initial (opacity: 0) state before
+    // we flip to visible — otherwise the transition can get skipped on mount.
+    const raf1 = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setStart(true));
+    });
+    return () => cancelAnimationFrame(raf1);
+  }, []);
+
   return (
     <section className="relative flex h-screen min-h-[720px] w-full flex-col overflow-hidden">
       <Image
@@ -20,18 +35,18 @@ export function Hero() {
       <div className="relative flex h-full flex-col px-7">
         <div className="flex flex-1 flex-col justify-center pt-20">
           <h1 className="text-center font-display text-[clamp(2.5rem,8vw,10rem)] font-light uppercase leading-[0.8] tracking-[-0.04em] text-biege-100">
-            Flavors
+            <MaskedChars text="Flavors" start={start} />
           </h1>
 
           <div className="mt-2 flex flex-col items-center gap-4 sm:mt-4 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6">
             <p className="order-2 justify-self-end font-sans text-[0.85em] font-medium uppercase tracking-wide text-biege-100 sm:order-1 sm:text-sm">
-              Serving Central Florida
+              <MaskedChars text="Serving Central Florida" start={start} />
             </p>
             <h1 className="order-1 text-center font-display text-[clamp(2.5rem,8vw,10rem)] font-light uppercase leading-[0.8] tracking-[-0.04em] text-biege-100 sm:order-2">
-              That Stay
+              <MaskedChars text="That Stay" start={start} startIndex={7} />
             </h1>
             <p className="order-3 justify-self-start font-sans text-[0.85em] font-medium uppercase tracking-wide text-biege-100 sm:text-sm">
-              Established 1996
+              <MaskedChars text="Established 1996" start={start} />
             </p>
           </div>
         </div>

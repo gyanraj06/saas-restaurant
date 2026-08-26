@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
+import { MaskedChars, useRevealOnVisible } from "@/components/animations/MaskedChars";
 
 // Matches the live site: the section runs taller than the viewport on desktop
 // (135vh, vs a plain full screen below the lg breakpoint), with the heading
 // pinned to the top and the paragraph pinned to the bottom via `justify-between`
 // — so the paragraph only comes into view after scrolling further into the section.
 export function RootedSection() {
+  const { ref, start } = useRevealOnVisible<HTMLHeadingElement>();
+
   return (
     <section className="relative h-screen min-h-[640px] w-full overflow-hidden lg:h-[135vh]">
       <Image
@@ -17,10 +22,13 @@ export function RootedSection() {
       <div className="absolute inset-0 bg-black/30" />
 
       <div className="relative flex h-full flex-col justify-between px-7 py-[42px]">
-        <h2 className="font-display text-[clamp(2rem,6vw,6rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-biege-100">
-          Rooted In
+        <h2
+          ref={ref}
+          className="font-display text-[clamp(2rem,6vw,6rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-biege-100"
+        >
+          <MaskedChars text="Rooted In" start={start} />
           <br />
-          Experience
+          <MaskedChars text="Experience" start={start} startIndex={8} />
         </h2>
 
         <p className="max-w-lg font-sans text-xs font-medium leading-relaxed text-biege-100 sm:text-sm">

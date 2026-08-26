@@ -1,20 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { drinksMenu } from "@/content/drinks-menu";
+import { MaskedChars, useRevealOnVisible } from "@/components/animations/MaskedChars";
 
 // Matches the live site: the left panel pins with `sticky` for the height of the
 // section while the two stacked photos on the right keep scrolling past it.
 export function DrinksSection() {
+  const { ref, start } = useRevealOnVisible<HTMLDivElement>();
+
   return (
     <section className="flex w-full flex-col bg-biege-100 lg:flex-row">
       <div className="flex w-full flex-col justify-between bg-biege-100 px-7 pb-5 pt-6 lg:sticky lg:top-0 lg:h-screen lg:w-[45%]">
-        <div>
+        <div ref={ref}>
           <h2 className="font-display text-[clamp(1.75rem,4vw,4.25rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-dark-800">
-            Drinks That
+            <MaskedChars text="Drinks That" start={start} />
             <br />
-            Complete
+            <MaskedChars text="Complete" start={start} startIndex={10} />
             <br />
-            The Experience
+            <MaskedChars text="The Experience" start={start} startIndex={18} />
           </h2>
 
           <p className="mt-5 max-w-md font-sans text-sm font-medium leading-relaxed text-dark-800/80 sm:text-base">

@@ -1,19 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ForkKnifeIcon } from "@/components/icons";
 import { signaturePlates } from "@/content/signature-menu";
 import { reserveLocations } from "@/content/nav";
+import { MaskedChars, useRevealOnVisible } from "@/components/animations/MaskedChars";
 
 export function SignaturePlatesSection() {
+  const { ref, start } = useRevealOnVisible<HTMLElement>();
+
   return (
-    <section className="flex w-full flex-col bg-biege-100 lg:flex-row">
+    <section ref={ref} className="flex w-full flex-col bg-biege-100 lg:flex-row">
       <div className="w-full bg-dark-800 p-6 lg:w-[45%] lg:p-7">
         <div className="bg-amber-500">
           <div className="flex items-start justify-between px-5 pt-6">
             <h3 className="font-display text-[clamp(1.75rem,4vw,4.25rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-dark-800">
-              Signature
+              <MaskedChars text="Signature" start={start} />
               <br />
-              Plates
+              <MaskedChars text="Plates" start={start} startIndex={9} />
             </h3>
             <ForkKnifeIcon className="mt-2 h-6 w-6 shrink-0 text-dark-800" />
           </div>
@@ -55,9 +60,9 @@ export function SignaturePlatesSection() {
       <div className="flex w-full flex-col lg:w-[55%]">
         <div className="p-7 lg:p-10">
           <h3 className="font-display text-[clamp(1.75rem,4vw,4.25rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-dark-800">
-            Signature Dishes.
+            <MaskedChars text="Signature Dishes." start={start} />
             <br />
-            Classic Roots.
+            <MaskedChars text="Classic Roots." start={start} startIndex={16} />
           </h3>
 
           <p className="mt-5 max-w-lg font-sans text-sm font-medium leading-relaxed text-dark-800/80 sm:text-base">
