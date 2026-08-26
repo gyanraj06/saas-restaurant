@@ -1,6 +1,6 @@
 import type { MenuItem } from "@/content/signature-menu";
 
-// Sourced directly from the live site's rendered menu data (amritpalace.com).
+// Sourced directly from the live site's rendered menu data (mazza.com).
 export const drinksMenu: MenuItem[] = [
   {
     name: "Tamarind Margarita",

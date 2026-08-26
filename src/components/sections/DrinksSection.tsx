@@ -56,7 +56,7 @@ export function DrinksSection() {
         </div>
       </div>
 
-      <div className="order-first flex w-full flex-col gap-1.5 py-1.5 pr-1.5 lg:order-none lg:w-[55%]">
+      <div className="order-first hidden w-full flex-col gap-1.5 py-1.5 pr-1.5 sm:flex lg:order-none lg:w-[55%]">
         <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-auto sm:h-[76em] lg:h-[54em]">
           <Image
             src="/images/cocktails-1.avif"

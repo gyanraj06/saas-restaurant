@@ -4,7 +4,7 @@ export type MenuItem = {
   description: string;
 };
 
-// Sourced directly from the live site's rendered menu data (amritpalace.com).
+// Sourced directly from the live site's rendered menu data (mazza.com).
 export const signaturePlates: MenuItem[] = [
   {
     name: "Variety Tray",

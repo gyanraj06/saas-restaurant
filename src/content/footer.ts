@@ -17,7 +17,7 @@ export type FooterContact = {
   phone: string;
 };
 
-// Sourced directly from the live site's rendered footer (amritpalace.com).
+// Sourced directly from the live site's rendered footer (mazza.com).
 export const footerLocations: FooterLocation[] = [
   { city: "Ocala", address: "3415 SW College Rd Ocala, FL 34474" },
   { city: "Gainesville", address: "3105 SW 34th Street Gainesville, FL 32608" },
@@ -42,7 +42,7 @@ export const footerContacts: FooterContact[] = [
 ];
 
 // TODO: swap in the business's real inbox once supplied.
-export const footerEmail = "info@amritpalace.com";
+export const footerEmail = "info@mazza.com";
 
 export const discoverLinks: FooterLinkItem[] = [...primaryNav, contactLink];
 

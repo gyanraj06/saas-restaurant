@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import { cateringFeatures } from "@/content/catering-features";
-import { MaskedChars, useRevealOnVisible } from "@/components/animations/MaskedChars";
+import {
+  MaskedChars,
+  useRevealOnVisible,
+} from "@/components/animations/MaskedChars";
 
 export function CateringSection() {
   const { ref, start } = useRevealOnVisible<HTMLDivElement>();
@@ -19,7 +22,7 @@ export function CateringSection() {
             <MaskedChars text="Exceptional Food" start={start} />
           </p>
           <h2 className="order-1 font-display text-[clamp(2rem,6vw,6rem)] font-light uppercase leading-[0.95] tracking-[-0.03em] text-dark-800 sm:order-2 [font-kerning:none]">
-            <MaskedChars text="The Amrit Way" start={start} startIndex={8} />
+            <MaskedChars text="The Maza Way" start={start} startIndex={8} />
           </h2>
           <p className="order-3 justify-self-start font-sans text-xs font-medium uppercase tracking-wide text-dark-800 sm:text-sm">
             <MaskedChars text="Anywhere" start={start} />

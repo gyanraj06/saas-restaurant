@@ -3,7 +3,7 @@ export type MenuCategory = {
   slug: string;
 };
 
-// Sourced directly from the live site's rendered category tabs (amritpalace.com/menu).
+// Sourced directly from the live site's rendered category tabs (mazza.com/menu).
 export const menuCategories: MenuCategory[] = [
   { label: "Appetizers", slug: "appetizers" },
   { label: "Chicken", slug: "chicken" },

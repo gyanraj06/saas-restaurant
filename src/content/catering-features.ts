@@ -4,7 +4,7 @@ export type CateringFeature = {
   image: string;
 };
 
-// Sourced directly from the live site's rendered catering section (amritpalace.com).
+// Sourced directly from the live site's rendered catering section (mazza.com).
 export const cateringFeatures: CateringFeature[] = [
   {
     title: "Buffet Displays",

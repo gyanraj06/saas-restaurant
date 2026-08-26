@@ -6,11 +6,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { primaryNav, contactLink, reserveLink, orderLocations, siteInfo } from "@/content/nav";
 import { OrderNowModal } from "@/components/layout/OrderNowModal";
-import { ForkKnifeIcon, ClocheIcon, ChevronDownIcon } from "@/components/icons";
+import { MobileNavDrawer } from "@/components/layout/MobileNavDrawer";
+import { ForkKnifeIcon, ClocheIcon, ChevronDownIcon, MenuIcon } from "@/components/icons";
 
 export function Header() {
   const [hidden, setHidden] = useState(false);
   const [orderOpen, setOrderOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
 
@@ -79,17 +81,17 @@ export function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="hidden items-center gap-4 sm:flex">
           <Link href="/menu" className="flex items-center gap-2.5">
             <span className={`font-sans text-[11px] font-medium ${isLightHero ? "text-dark-800" : "text-biege-100"}`}>
               Menu
             </span>
-            <span className="hidden h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800 sm:flex">
+            <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800">
               <ForkKnifeIcon className="h-4 w-4" />
             </span>
           </Link>
 
-          <div className={`hidden h-8 w-px sm:block ${isLightHero ? "bg-dark-800" : "bg-biege-100"}`} />
+          <div className={`h-8 w-px ${isLightHero ? "bg-dark-800" : "bg-biege-100"}`} />
 
           <div className="flex items-center gap-2.5">
             <button
@@ -106,15 +108,34 @@ export function Header() {
               type="button"
               onClick={() => setOrderOpen(true)}
               aria-label="Order now"
-              className="hidden h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800 transition-opacity hover:opacity-85 sm:flex"
+              className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-amber-500 text-dark-800 transition-opacity hover:opacity-85"
             >
               <ClocheIcon className="h-4 w-4" />
             </button>
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setMobileNavOpen(true)}
+          aria-haspopup="dialog"
+          aria-expanded={mobileNavOpen}
+          className={`flex items-center gap-2 sm:hidden ${textColor}`}
+        >
+          <span className="font-sans text-[11px] font-medium">Menu</span>
+          <MenuIcon className="h-3.5 w-4" />
+        </button>
       </div>
 
       <OrderNowModal open={orderOpen} onClose={() => setOrderOpen(false)} locations={orderLocations} />
+      <MobileNavDrawer
+        open={mobileNavOpen}
+        onClose={() => setMobileNavOpen(false)}
+        onOrderNow={() => {
+          setMobileNavOpen(false);
+          setOrderOpen(true);
+        }}
+      />
     </header>
   );
 }

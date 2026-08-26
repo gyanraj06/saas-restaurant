@@ -26,6 +26,14 @@ export function ClocheIcon({ className }: { className?: string }) {
   );
 }
 
+export function MenuIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 16" fill="none" stroke="currentColor" strokeWidth={1.5} className={className}>
+      <path strokeLinecap="round" d="M0 1h20M0 8h20M0 15h20" />
+    </svg>
+  );
+}
+
 export function CloseIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5} className={className}>

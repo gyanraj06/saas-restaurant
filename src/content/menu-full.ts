@@ -17,7 +17,7 @@ export type MenuCategoryContent = {
   subgroups?: MenuSubgroup[];
 };
 
-// Sourced directly from the live site's rendered menu data (amritpalace.com/menu).
+// Sourced directly from the live site's rendered menu data (mazza.com/menu).
 // Note: the nav tab for the first category reads "Appetizers" (see menu-categories.ts)
 // while the on-page section heading reads "Starters" — that mismatch is on the live
 // site itself, reproduced here intentionally.

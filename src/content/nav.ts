@@ -17,17 +17,17 @@ export const reserveLink: NavLink = { label: "Reserve a Table", href: "/reserve"
 export const reserveLocations: NavLink[] = [
   {
     label: "Book — Ocala",
-    href: "https://www.opentable.com/r/amrit-palace-indian-restaurant-reservations-ocala?restref=276529&lang=en-US&ot_source=Restaurant%20website",
+    href: "https://www.opentable.com/r/Maza-palace-indian-restaurant-reservations-ocala?restref=276529&lang=en-US&ot_source=Restaurant%20website",
   },
   {
     label: "Book — Gainesville",
-    href: "https://www.opentable.com/r/amrit-palace-gainesville-reservations-gainesville?restref=1493497&lang=en-US&ot_source=Restaurant%20website",
+    href: "https://www.opentable.com/r/Maza-palace-gainesville-reservations-gainesville?restref=1493497&lang=en-US&ot_source=Restaurant%20website",
   },
 ];
 
 export const orderLocations: NavLink[] = [
-  { label: "Maza Bistrot Ocala", href: "https://order.toasttab.com/online/amrit-palace-ocala" },
-  { label: "Maza Bistrot Gainesville", href: "https://order.toasttab.com/online/amrit-palace-gainesville" },
+  { label: "Maza Bistrot Ocala", href: "https://order.toasttab.com/online/Maza-palace-ocala" },
+  { label: "Maza Bistrot Gainesville", href: "https://order.toasttab.com/online/Maza-palace-gainesville" },
 ];
 
 export const siteInfo = {
